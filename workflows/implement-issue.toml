@@ -1,0 +1,34 @@
+[trigger]
+type = "github_issue_assigned"
+assigned_to = "zeroklaw"
+allowed_users = ["mintybasil", "zeroklaw"]
+
+[git]
+clone = true
+worktree = true
+default_branch = "main"
+
+[[steps]]
+name = "Plan"
+agent = "cto"
+prompt_template = "Read GitHub issue #{{issue_number}} in {{owner}}/{{repo}}. Use the writing-plans skill, and store the plan in {{output_dir}}/plan.md."
+
+[[steps.post_hooks]]
+type = "file_not_empty"
+path = "{{output_dir}}/plan.md"
+
+[[steps]]
+name = "Implement"
+agent = "cto"
+prompt_template = """
+Please complete the following steps:
+
+1. Read the plan in {{output_dir}}/plan.md and review the corresponding issue #{{issue_number}} in {{owner}}/{{repo}}.
+2. Implement the plan in your workspace. Push your changes to a new branch (zeroklaw/<branch-name>).
+3. Run the tests and linters locally and fix any issues. Make sure to update documentation (README.md, AGENTS.md, etc) as needed.
+4. Open a draft PR, and make sure to include "Closes #{{issue_number}}" somewhere in the PR description.
+5. Ensure that all CI checks are passing. Wait until all checks complete, do not exit if they are still running. Fix any issues they uncover.
+6. Check for merge conflicts. Update the PR to resolve them if needed.
+7. Update the PR description if any changes are required.
+8. Convert the PR from a draft to a ready for review PR, and request a review from @mintybasil.
+"""

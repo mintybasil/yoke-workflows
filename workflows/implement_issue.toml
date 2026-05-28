@@ -10,7 +10,7 @@ default_branch = "main"
 
 [[steps]]
 name = "Plan"
-agent = "cto"
+agent = "pm"
 prompt_template = "Read GitHub issue #{{issue_number}} in {{owner}}/{{repo}}. Use the writing-plans skill, and store the plan in {{output_dir}}/plan.md."
 
 [[steps.post_hooks]]
@@ -19,7 +19,7 @@ path = "{{output_dir}}/plan.md"
 
 [[steps]]
 name = "Implement"
-agent = "cto"
+agent = "swe"
 prompt_template = """
 Please complete the following steps:
 

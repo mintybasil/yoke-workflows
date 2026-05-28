@@ -9,7 +9,7 @@ default_branch = "main"
 
 [[steps]]
 name = "Review and Respond"
-agent = "cto"
+agent = "swe"
 prompt_template = """
 You have been @mentioned in issue #{{issue_number}} in {{owner}}/{{repo}}.
 

@@ -9,7 +9,7 @@ default_branch = "main"
 
 [[steps]]
 name = "Address Review"
-agent = "cto"
+agent = "swe"
 prompt_template = """
 We need to address review {{review_id}} on PR {{pr_number}} in {{owner}}/{{repo}}. Please complete the following steps:
 

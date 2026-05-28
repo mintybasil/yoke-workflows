@@ -21,8 +21,12 @@ repos = [
 # Named agent instances (Hermes API configs)
 # Each step in a workflow references an agent by name
 [[agents]]
-name = "cto"
+name = "pm"
 base_url = "http://localhost:8643"
+
+[[agents]]
+name = "swe"
+base_url = "http://localhost:8644"
 
 # Runtime settings
 [runtime]
@@ -33,12 +37,10 @@ workdir = "~/.yoke"         # runtime data directory
 [server]
 host = "0.0.0.0"
 port = 8644
-webhook_secret = "your-webhook-secret"  # Set via WEBHOOK_SECRET env var
-max_body_size = 1048576                 # 1MB default
 
 # Required Environment Variables:
 # - HERMES_API_KEY: Bearer token for Hermes REST API
-# - WEBHOOK_SECRET: Webhook authentication key (overrides server.webhook_secret)
+# - WEBHOOK_SECRET: Webhook authentication key
 # - GITHUB_TOKEN: GitHub auth for webhook management and git operations
 
 # After configuring, register webhooks on your repositories:

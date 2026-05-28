@@ -1,0 +1,19 @@
+[trigger]
+type = "github_issue_comment_mention"
+mentioned_user = "zeroklaw"
+
+[git]
+clone = true
+worktree = true
+default_branch = "main"
+
+[[steps]]
+name = "Review and Respond"
+agent = "swe"
+prompt_template = """
+You have been @mentioned in issue #{{issue_number}} in {{owner}}/{{repo}}.
+
+1. Review the entire issue thread to understand the context and identify where you are tagged and what is being asked of you.
+2. **Always** respond with a comment on the issue addressing what was asked of you.
+3. If a code change is requested, optionally open a PR to address it.
+"""

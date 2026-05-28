@@ -1,0 +1,50 @@
+# Yoke Configuration Example
+# Copy this file to config.toml and edit for your environment
+
+# Platform: "github" or "gitlab"
+platform = "github"
+
+# Repos to monitor — shared across all workflows
+# Add all repositories where you want workflows to run
+repos = [
+    { owner = "zerokrab", repo = "bento-hancho" },
+    { owner = "zerokrab", repo = "bento-bench" },
+    { owner = "zerokrab", repo = "boundless-profit-explorer" },
+    { owner = "zerokrab", repo = "bento-bench-autorun" },
+    { owner = "mintybasil", repo = "agent-orchestrator" },
+    { owner = "mintybasil", repo = "mintybasil.dev" },
+    { owner = "mintybasil", repo = "agent-vms-ansible" },
+    { owner = "mintybasil", repo = "gha-runners" },
+    { owner = "mintybasil", repo = "enginedj-overlay" },
+]
+
+# Named agent instances (Hermes API configs)
+# Each step in a workflow references an agent by name
+[[agents]]
+name = "pm"
+base_url = "http://localhost:8643"
+
+[[agents]]
+name = "swe"
+base_url = "http://localhost:8644"
+
+# Runtime settings
+[runtime]
+max_concurrent = 2          # max concurrent workflow runs (0 = unlimited)
+workdir = "~/.yoke"         # runtime data directory
+
+# Server settings
+[server]
+host = "0.0.0.0"
+port = 8644
+
+# Required Environment Variables:
+# - HERMES_API_KEY: Bearer token for Hermes REST API
+# - WEBHOOK_SECRET: Webhook authentication key
+# - GITHUB_TOKEN: GitHub auth for webhook management and git operations
+
+# After configuring, register webhooks on your repositories:
+#   yoke --config config.toml webhooks add --workflows .
+#
+# Verify webhooks were created:
+#   yoke --config config.toml webhooks list

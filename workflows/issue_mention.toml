@@ -1,6 +1,7 @@
 [trigger]
 type = "github_issue_comment_mention"
 mentioned_user = "zeroklaw"
+allowed_users = ["mintybasil"]
 
 [git]
 clone = true

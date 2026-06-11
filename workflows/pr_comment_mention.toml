@@ -1,0 +1,22 @@
+[trigger]
+type = "github_pull_request_comment_mention"
+mentioned_user = "zeroklaw"
+allowed_users = ["mintybasil"]
+
+[git]
+clone = true
+default_branch = "main"
+
+[[steps]]
+name = "Respond to Comment"
+agent = "swe"
+prompt_template = """
+You have been @mentioned in comment {{comment_id}} on PR #{{pr_number}} in {{owner}}/{{repo}}.
+
+The comment says: {{comment_body}}
+
+Please can you:
+1. Review the full PR thread to understand the context and identify why you are tagged and what is being asked of you.
+2. **Always** respond with a reply comment addressing what was asked of you. Inclue an @ mention of the user who tagged you.
+3. If a code change is requested, optionally open a PR to address it. If you require further clarification, please post a reply asking for clarification and then halt.
+"""

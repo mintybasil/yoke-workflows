@@ -4,7 +4,6 @@ allowed_users = ["mintybasil"]
 
 [git]
 clone = true
-worktree = true
 default_branch = "main"
 
 [[steps]]

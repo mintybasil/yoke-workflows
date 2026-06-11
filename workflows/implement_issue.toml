@@ -5,7 +5,6 @@ allowed_users = ["mintybasil", "zeroklaw"]
 
 [git]
 clone = true
-worktree = true
 default_branch = "main"
 
 [[steps]]

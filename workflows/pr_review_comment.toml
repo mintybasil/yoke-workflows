@@ -3,8 +3,7 @@ type = "github_pull_request_review"
 allowed_users = ["mintybasil"]
 
 [git]
-clone = true
-default_branch = "main"
+clone = false
 
 [[steps]]
 name = "Address Review"
@@ -12,7 +11,7 @@ agent = "swe"
 prompt_template = """
 We need to address review {{review_id}} on PR {{pr_number}} in {{owner}}/{{repo}}. Please complete the following steps:
 
-1. First you must react with "eyes" to the review comment using the GitHub reactions API endpoint.
+1. First you must react with "eyes" emoji to the review comment using the GitHub reactions API endpoint.
 2. Examine the PR description, and any other comments/reviews that have been left to get complete context.
 3. Analyze the review, DO NOT assume it to be correct, validate any claims it makes.
 4. If you have sufficient context to address the review: implement and push changes, and respond with a comment. If you need feedback or additional context: add a comment to the PR requesting it.

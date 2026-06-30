@@ -4,8 +4,7 @@ mentioned_user = "zeroklaw"
 allowed_users = ["mintybasil"]
 
 [git]
-clone = true
-default_branch = "main"
+clone = false
 
 [[steps]]
 name = "Respond to Comment"
